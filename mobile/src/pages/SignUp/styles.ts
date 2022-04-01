@@ -8,8 +8,8 @@ type IChangeScreen = {
 
 export const Container = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-      flexGrow: 1,
-      backgroundColor: theme.colors.title
+    flexGrow: 1,
+    backgroundColor: theme.colors.title
   }
 }))`
   height: 100%;
@@ -48,7 +48,6 @@ export const Title = styled.Text`
   font-size: ${RFValue(34)}px;
   color: ${({ theme }) => theme.colors.black_title};
   font-family: ${({ theme }) => theme.fonts.medium};
-  max-width: 180px;
 `;
 
 export const FormTitle = styled.Text`

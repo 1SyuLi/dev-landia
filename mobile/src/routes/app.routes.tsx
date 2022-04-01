@@ -28,7 +28,7 @@ export function AppRoutes() {
                     </Group>
                     :
                     <Group>
-                        <Screen name='SignIn' component={SignIn} />
+                        <Screen name='SignUp' component={SignUp} />
                     </Group>
             }
         </Navigator>

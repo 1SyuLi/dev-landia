@@ -7,6 +7,7 @@ export declare global {
             Perfil: undefined;
             Nada: undefined;
             SignIn: undefined;
+            SignUp: undefined;
         }
     }
 }

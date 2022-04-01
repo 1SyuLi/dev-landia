@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import * as Yup from 'yup';
+
 import {
+    Alert,
     StatusBar,
     TouchableOpacity,
-    KeyboardAvoidingView,
-    TouchableWithoutFeedback,
-    Keyboard,
-    Platform,
 } from 'react-native';
 
 import { useTheme } from 'styled-components';
@@ -32,9 +31,26 @@ export function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function handleSignIn() {
-        console.log("Email", email);
-        console.log("Senha", password);
+    async function handleSignIn() {
+
+        try {
+            const schema = Yup.object().shape({
+                email: Yup.string()
+                    .required('E-mail é obrigatório')
+                    .email('Digite um e-mail válido'),
+                password: Yup.string()
+                    .required('Senha é obrigatória')
+                    .min(6, 'A senha deve ter no mínimo 6 caracteres'),
+            });
+
+            await schema.validate({ email, password });
+            console.log('Validation passed', { email, password });
+        } catch (error) {
+            if (error instanceof Yup.ValidationError) {
+                Alert.alert('Erro na validação', error.message);
+            }
+        }
+
     }
 
     return (
@@ -79,6 +95,7 @@ export function SignIn() {
                 textColor={theme.colors.white}
                 onPress={handleSignIn}
             />
+
 
             <SignUp>
                 <TouchableOpacity>
