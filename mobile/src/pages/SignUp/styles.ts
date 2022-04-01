@@ -14,7 +14,7 @@ export const Container = styled.ScrollView.attrs(({ theme }) => ({
 }))`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.title};
-  padding-top: ${getStatusBarHeight() + 32}px;
+  padding-top: ${getStatusBarHeight()}px;
 `;
 
 export const Header = styled.View`
@@ -34,7 +34,7 @@ export const ChangeScreen = styled.View<IChangeScreen>`
   width: 6px;
   height: 6px;
   border-radius: 6px;
-  margin-left: 2px;
+  margin-left: 3px;
   background-color: ${props => props.isActive ? '#47474D' : '#C4C4C4'};
 `
 

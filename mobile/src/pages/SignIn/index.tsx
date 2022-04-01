@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 
 import {
@@ -15,6 +16,8 @@ import { Button } from '../../components/Form/Button';
 import { Input } from '../../components/Form/Input';
 import { PasswordInput } from '../../components/Form/PasswordInput';
 
+
+
 import {
     Container,
     Logo,
@@ -25,9 +28,15 @@ import {
     SignUpText,
 } from './styles';
 
+
+
+
+
 export function SignIn() {
 
     const theme = useTheme();
+    const navigation = useNavigation();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -44,7 +53,6 @@ export function SignIn() {
             });
 
             await schema.validate({ email, password });
-            console.log('Validation passed', { email, password });
         } catch (error) {
             if (error instanceof Yup.ValidationError) {
                 Alert.alert('Erro na validação', error.message);
